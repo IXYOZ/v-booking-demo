@@ -16,7 +16,7 @@ export default function OTP({ onVerify }: {onVerify : (otp:string) => void}){
                 value={otp}
                 onChange={(e) => setOtp(e.target.value)}
                 placeholder="Enter OTP"
-                className="w-l px-0.5 py-2 text-center border border-white"
+                className="w-l px-0.5 py-2 text-center text-white border border-white"
                 required
             />
             </div>
