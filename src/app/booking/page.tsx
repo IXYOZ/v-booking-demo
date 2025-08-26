@@ -87,6 +87,7 @@ export default function BookingPage() {
           value={isSelf? storeName:""}
           onChange={handleChange}
           className="w-full p-2 bg-black border border-gray-500 rounded"
+          disabled={isSelf? true: false}
           required
         />
         <TimeTable onSelect={(datetime) => setForm({...form,datetime})}></TimeTable>
