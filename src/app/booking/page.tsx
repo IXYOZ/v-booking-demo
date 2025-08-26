@@ -16,15 +16,19 @@ export default function BookingPage() {
     phone:'',
     note:'',
   })
+  const [storePhone, setStorePhone] = useState('')
+  const [storeName, setStoreName] = useState('')
   useEffect(() => {
-    const storePhone = localStorage.getItem("phone") || "";
+    
+    const phone = localStorage.getItem("phone") || "";
     const name = localStorage.getItem("name") || "";
 
-    if(storePhone) setPhone(storePhone)
+    setStorePhone(phone)
+    setStoreName(name)
     const askBookingFor = async () => {
       // const isSelf = window.confirm("are you want to booking for yourself?");
       if (isSelf) {
-        setForm((prev) => ({ ...prev, name, phone: storePhone }));
+        setForm((prev) => ({ ...prev, name: storeName, phone: storePhone }));
       } else {
         setForm((prev) => ({ ...prev, name: '', phone: '' }));
       }
@@ -53,7 +57,7 @@ export default function BookingPage() {
     if (res.ok) {
       localStorage.setItem("name", name);
       localStorage.setItem("phone", phone);
-      await router.push("/login");
+      await router.push("/dashboard");
     } else {
       alert("Registration/Booking failed: " + data.message);
     }
@@ -62,7 +66,7 @@ export default function BookingPage() {
 
   return (
     <div className="max-w-xl mx-auto p-6 text-white">
-      {!phone && <p className='text-sm text-red-500'>Not member? we'll register you automatically!</p>}
+      {!storePhone && <p className='text-sm text-red-500'>Not member? we'll register you automatically!</p>}
         <h1 className="text-2xl font-bold mb-4">Book a Vaccine Appointment</h1>
       {/* Toggle */}
       <div className="flex items-center space-x-2 mb-4">
@@ -79,8 +83,8 @@ export default function BookingPage() {
         <input
           type="text"
           name="name"
-          placeholder="Your name"
-          value={form.name}
+          placeholder="Name"
+          value={isSelf? storeName:""}
           onChange={handleChange}
           className="w-full p-2 bg-black border border-gray-500 rounded"
           required
@@ -91,7 +95,7 @@ export default function BookingPage() {
           type="tel"
           name="phone"
           placeholder="Phone number"
-          value={form.phone}
+          value={storePhone}
           onChange={handleChange}
           className="w-full p-2 bg-black border border-gray-500 rounded"
         />

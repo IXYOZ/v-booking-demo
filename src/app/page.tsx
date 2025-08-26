@@ -14,12 +14,12 @@ export default function Home() {
 
       {/* Main Actions */}
       <main className="flex flex-col sm:flex-row gap-4 mt-10">
-        <Link
-          href="/booking"
+        {/* <Link
+          href="/register"
           className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-full shadow transition"
         >
           Book Now
-        </Link>
+        </Link> */}
         <Link
           href="/register"
           className="border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 font-semibold px-6 py-3 rounded-full transition"

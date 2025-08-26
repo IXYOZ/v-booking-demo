@@ -1,9 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 import { NextResponse } from "next/server";
 
+import { IS_DEMO } from "@/lib/config";
+
 const prisma = new PrismaClient()
 
+
+
 export async function GET(req:Request) {
+    if(IS_DEMO){
+        return new Response(JSON.stringify({message:"Demo mode not found"}))
+        
+    }
+
     const {searchParams} = new URL(req.url)
     // const date = searchParams.get("date") //format: YYYY-MM-DD
     const start = searchParams.get("start")

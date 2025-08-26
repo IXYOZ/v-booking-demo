@@ -75,9 +75,10 @@ export default function DashboardPage() {
       {bookings.length === 0 ? (
         <p>No bookings yet</p>
       ) : (
-        <ul className="space-y-4">
+          <div className="flex justify-center py-4">
+        <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 w-full max-w-6xl ">
           {bookings.map((b) => (
-            <li key={b.id} className="border border-gray-70 rounded p-4">
+            <li key={b.id} className=" text-center items-center border border-gray-70 rounded p-4">
               <p>
                 <strong>Name: </strong>
                 {b.name}
@@ -94,7 +95,7 @@ export default function DashboardPage() {
                 <strong>Date: </strong>
                 {format(new Date(b.datetime), "dd MMM yyyy HH:mm")}
               </p>
-              <div className="flex gap-4">
+              <div className="flex justify-center py-2 gap-4">
                 <button
                   onClick={() => {
                     handleCancel(b.id);
@@ -110,6 +111,7 @@ export default function DashboardPage() {
             </li>
           ))}
         </ul>
+        </div>
       )}
       
     </main>
