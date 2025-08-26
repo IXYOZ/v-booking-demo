@@ -84,7 +84,7 @@ export default function BookingPage() {
           type="text"
           name="name"
           placeholder="Name"
-          value={isSelf? storeName:""}
+          value={isSelf? storeName:form.name}
           onChange={handleChange}
           className="w-full p-2 bg-black border border-gray-500 rounded"
           disabled={isSelf? true: false}
@@ -99,6 +99,7 @@ export default function BookingPage() {
           value={storePhone}
           onChange={handleChange}
           className="w-full p-2 bg-black border border-gray-500 rounded"
+          disabled
         />
         <textarea
           name="note"
