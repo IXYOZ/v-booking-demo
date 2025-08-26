@@ -65,7 +65,7 @@ export default function DashboardPage() {
 
   if(!isLoaded)return <p className="text-white p-4">Loading...</p>
   return (
-    <main className="p-6 text-white">
+    <main className="p-6 text-center text-white">
       <h1 className="text-2xl font-bold mb-4"> My Appointments</h1>
       <div className="py-4">
       <button className="bg-white text-black rounded px-2 " >
